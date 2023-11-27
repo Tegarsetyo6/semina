@@ -58,3 +58,56 @@ const getOneTalents = async (req) => {
 
   return result;
 };
+
+const updateTalents = async (req) => {
+  const { id } = req.params;
+  const { name, image, role } = req.body;
+
+  await checkingImage(image);
+
+  const check = await Talents.findOne({
+    name,
+    organizer: req.user.organizer,
+    _id: { $ne: id },
+  });
+
+  if (check) throw new BadRequestError('Pembicara sudah terdaftar');
+
+  const result = await Talents.findOneAndUpdate({ _id: id }, { name, image, role, organizer: req.user.organizer }, { new: true, runValidators: true });
+
+  if (!result) throw new NotFoundError(`Tidak ada pembicara dengan id :  ${id}`);
+
+  return result;
+};
+
+const deleteTalents = async (req) => {
+  const { id } = req.params;
+
+  const result = await Talents.findOne({
+    _id: id,
+    organizer: req.user.organizer,
+  });
+
+  if (!result) throw new NotFoundError(`Tidak ada pembicara dengan id :  ${id}`);
+
+  await result.remove();
+
+  return result;
+};
+
+const checkingTalents = async (id) => {
+  const result = await Talents.findOne({ _id: id });
+
+  if (!result) throw new NotFoundError(`Tidak ada pembicara dengan id :  ${id}`);
+
+  return result;
+};
+
+module.exports = {
+  getAllTalents,
+  createTalents,
+  getOneTalents,
+  updateTalents,
+  deleteTalents,
+  checkingTalents,
+};
