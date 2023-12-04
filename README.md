@@ -4,7 +4,7 @@ Semina is a Node.js-based API designed to power an online ticketing website. It 
 ## Installation & Run
 ```bash
 # Download this project
-go get github.com/Tegarsetyo6/semina
+git clone https://github.com/Tegarsetyo6/semina.git
 ```
 
 Before running API server, you should set the database config with yours or set the your database config with my values on [config.js]([https://github.com/mingrammer/go-todo-rest-api-example/blob/master/config/config.go](https://github.com/Tegarsetyo6/semina/blob/master/app/config.js))
