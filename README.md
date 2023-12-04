@@ -43,7 +43,7 @@ npm start
 * `PUT` : Update a categories
 * `DELETE` : Delete a categories
 
-* #### /events
+#### /events
 * `GET` : Get all events
 * `POST` : Create an event
 
@@ -52,13 +52,13 @@ npm start
 * `PUT` : Update an event
 * `DELETE` : Delete an event
 
-* #### /events/:id/status
+#### /events/:id/status
 * `PUT` : Update the status of event
 
-* #### /images
+#### /images
 * `POST` : Upload an Image
 
-* #### /orders
+#### /orders
 * `GET` : Get an Order
 
 #### /users
